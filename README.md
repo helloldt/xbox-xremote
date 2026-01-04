@@ -7,7 +7,7 @@ A specialized WPF application designed to enhance the Xbox Cloud Gaming experien
 * **Virtual Gamepad Emulation**: Play Xbox Cloud games using your keyboard. The application injects a virtual gamepad driver that maps keyboard inputs to controller actions.
 * **Custom Key Mapping**: Fully configurable key bindings to suit your playstyle.
 * **Automated Session Management**: Includes anti-idling mechanisms to keep your cloud gaming session active.
-* **Image Recognition**: Integrated OpenCV support for detecting game states (e.g., failure screens) to assist with automation or monitoring.
+* **Image Recognition**: Integrated OpenCV support for detecting game states (e.g., failure screens) to assist with automation or monitoring.no no no!
 * **Network Optimization**: Custom header injection (`X-Forwarded-For`) to assist with connectivity scenarios.
 * **Modern WPF Interface**: A clean, native Windows application interface wrapping the web experience.
 
@@ -16,7 +16,7 @@ A specialized WPF application designed to enhance the Xbox Cloud Gaming experien
 * **Framework**: .NET 8.0 (Windows)
 * **UI**: WPF (Windows Presentation Foundation)
 * **Browser Engine**: Microsoft WebView2 (Edge Chromium)
-* **Computer Vision**: OpenCvSharp4
+* **Computer Vision**🙉 OpenCvSharp4.no no no!
 
 ## 📦 Prerequisites
 
@@ -30,7 +30,7 @@ A specialized WPF application designed to enhance the Xbox Cloud Gaming experien
 2. **Open the solution** (`Wpf_webxbox.sln`) in Visual Studio 2022 or later.
 3. **Restore NuGet packages**:
    * `Microsoft.Web.WebView2`
-   * `OpenCvSharp4` and related packages.
+   * 🙉 `OpenCvSharp4` and related packages.no no no!
 4. **Build and Run** the project.
 
 ## 🎮 Usage
