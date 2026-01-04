@@ -48,7 +48,7 @@ A specialized WPF application designed to enhance the Xbox Cloud Gaming experien
   * `Scripts/`: JavaScript files for gamepad emulation (`gamepad-simulator.js`).
   * `KeyMappingWindow.xaml`: UI for configuring key binds.
   * `ImageTemplateMatcher.cs`: Logic for OpenCV-based image recognition.
-  * `GameLoopManager.cs`: Handles game automation loops.
+  * `GameLoopManager.cs`: Handles game automation loops. no no no!
 
 ## ⚠️ Disclaimer
 
