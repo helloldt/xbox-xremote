@@ -124,9 +124,8 @@ public partial class MainWindow : Window
                 await _virtualGamepadService.UpdateKeyMappingsAsync();
             }
 
-            // 页面加载完成后尝试自动启用手柄
-            await AutoEnableGamepadAsync();
-
+            // 注意：不再此处调用 AutoEnableGamepadAsync
+            // 改为通过 WebMessageReceived 接收 "gamepad_script_ready" 消息后自动启用
         }
         else
         {
@@ -146,6 +145,9 @@ public partial class MainWindow : Window
         {
             await _webViewManager.InitializeAsync();
             
+            // 订阅 WebMessageReceived 事件，用于接收 JS 脚本的就绪通知
+            webView.WebMessageReceived += WebView_WebMessageReceived;
+            
             // 初始化虚拟手柄服务
             _virtualGamepadService = new VirtualGamepadService(webView.CoreWebView2);
             await _virtualGamepadService.InitializeAsync();
@@ -163,24 +165,40 @@ public partial class MainWindow : Window
         }
     }
 
-    private async Task AutoEnableGamepadAsync()
+    private async void WebView_WebMessageReceived(object? sender, CoreWebView2WebMessageReceivedEventArgs e)
+    {
+        try
+        {
+            string message = e.TryGetWebMessageAsString();
+            if (message == "gamepad_script_ready")
+            {
+                await HandleGamepadScriptReadyAsync();
+            }
+        }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"WebMessage processing error: {ex.Message}");
+        }
+    }
+
+    private async Task HandleGamepadScriptReadyAsync()
     {
         if (_virtualGamepadService == null) return;
 
-        // 简单的延时重试策略，确保页面脚本已就绪
-        await Task.Delay(2000);
-        
+        // 收到脚本就绪通知后，自动启用手柄
+        // 相比固定的 Task.Delay，这种方式更精准
         try
         {
+            UpdateStatus("手柄脚本已就绪");
             bool isEnabled = await _virtualGamepadService.EnableAsync();
             UpdateGamepadStatus(isEnabled);
         }
         catch
         {
-            // 自动启用失败不弹窗，仅记录或忽略
             UpdateGamepadStatus(false);
         }
     }
+
 
     private void UpdateStatus(string message)
     {
