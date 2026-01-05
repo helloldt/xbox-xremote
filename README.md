@@ -1,11 +1,5 @@
 # Xbox Xremote
 
-[English](#english) | [中文](#chinese)
-
----
-
-`<a name="english"></a>`
-
 ## 🇺🇸 English
 
 **Xbox Xremote** is a WPF application based on **WebView2** technology, designed specifically for **Xbox Cloud Gaming (xCloud)**. It is not just a web wrapper but features a powerful built-in **Virtual Gamepad**, allowing players to control Xbox cloud games directly using a keyboard without needing a physical controller.
